@@ -17,7 +17,7 @@ contract Fundraiser is Ownable {
     event DonationReceived(address indexed donor, uint amount, uint timestamp);
     event FundsWithdrawn(address indexed beneficiary, uint amount);
 
-    constructor(address _beneficiary) {
+    constructor(address _beneficiary) Ownable(msg.sender) {
         beneficiary = _beneficiary;
     }
 

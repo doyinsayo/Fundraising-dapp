@@ -10,12 +10,12 @@ describe("Fundraiser", function () {
   });
 
   it("should allow donations", async function () {
-    await fundraiser.connect(addr1).donate({ value: ethers.utils.parseEther("1") });
-    expect(await fundraiser.totalDonations()).to.equal(ethers.utils.parseEther("1"));
+    await fundraiser.connect(addr1).donate({ value: ethers.parseEther("1") });
+    expect(await fundraiser.totalDonations()).to.equal(ethers.parseEther("1"));
   });
 
   it("should allow the owner to withdraw funds", async function () {
-    await fundraiser.connect(addr1).donate({ value: ethers.utils.parseEther("1") });
+    await fundraiser.connect(addr1).donate({ value: ethers.parseEther("1") });
     const initialBalance = await ethers.provider.getBalance(owner.address);
     await fundraiser.withdraw();
     const newBalance = await ethers.provider.getBalance(owner.address);
